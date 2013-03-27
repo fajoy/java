@@ -1,0 +1,6 @@
+//grant codeBase "file:/14ProjectServer/bin/" {
+//	permission java.security.AllPermission;
+//};
+grant {
+	permission java.security.AllPermission; 
+};

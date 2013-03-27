@@ -1,0 +1,6 @@
+//grant codeBase "file:/05RMIServer/bin/" {
+//	permission java.security.AllPermission;
+//};
+grant { 
+	permission java.security.AllPermission;
+};

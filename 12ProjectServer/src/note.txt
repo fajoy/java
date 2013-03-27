@@ -1,0 +1,161 @@
+DEMO流程大概如下，另外有改CODE、問CODE、LOGFILE
+
+
+1.開二個Servers，port分別是5566、6677
+2.開三個clients
+3.第一個client：
+3-1. (觀察有沒有prompt)(正確：有)
+3-2. 輸入"aaa"(觀察其它clients會不會出現登入訊息)(正確：不會出現訊息)
+3-3. console會先顯示"aaa is connecting to the chat server"，再顯示
+*******************************************
+** <aaa>, welcome to the chat system.
+*******************************************
+
+4.第二個client：
+4-1. 直接Enter，console會顯示"Error: No username is input."，再顯示"Username:"
+4-2. 輸入"aaa"，console會顯示"Error: The user 'aaa' is already online. Please change a name."，再顯示"Username:"
+
+5.第一個client：
+輸入"/who "，console會顯示
+Name IP/port
+aaa: xxx.xxx.xxx.xxx/xxxx <-- myself
+(Unknown): xxx.xxx.xxx.xxx/xxxx
+
+6.第二個client：
+6-1. 輸入"bbb"
+6-1-1. 第一個client console會顯示"bbb is connecting to the chat server"
+6-1-2. 第二個client console會顯示"bbb is connecting to the chat server"，再顯示
+*******************************************
+** <bbb>, welcome to the chat system.
+*******************************************
+
+7.第二個client：
+輸入"/who "，console會顯示
+Name IP/port
+aaa: xxx.xxx.xxx.xxx/xxxx
+bbb: xxx.xxx.xxx.xxx/xxxx <-- myself
+
+//1,2,3,4,6(5%)
+//5,7(5%)
+
+8.第一個client：
+8-1. 輸入"/yell "
+二個clients皆會顯示"aaa yelled:"
+8-2. 輸入"/yell Hi!"
+二個clients皆會顯示"aaa yelled: Hi!"
+
+//(5%)
+
+9.第二個client：
+9-1. 輸入"/tell aaa HiHi!"，第一個client會顯示"bbb told aaa: HiHi!"
+9-2. 輸入"/tell ccc QQ"，第二個client會顯示"Error: 'ccc' is not online."
+9-3. 輸入"/tell "，第二個client會顯示"Error: No target was given."
+
+10.第一個client：
+輸入"/tell bbb HiHi!"，第二個client會顯示"aaa told bbb: HiHi!"
+
+//(5%)
+
+11.(以下測/post)
+11-1. 第二個client輸入"/post String Project1 is really easy."
+兩個clients皆會顯示，"bbb posted message '1' in String: Project1 is really easy."
+11-2. 第一個client輸入"/post String Project2 is easier than project1."
+兩個clients皆會顯示，"aaa posted message '2' in String: Project2 is easier than project1."
+11-3. 第一個client輸入"/post String "
+兩個clients皆會顯示，"aaa posted message '3' in String: "
+11-4. 第一個client輸入"/post Obj This is a test."
+第一個client會顯示，Error: No such post type.(不會broadcast)
+11-5. 第一個client輸入"/post "
+第一個client會顯示，"Error: No post type."(不會broadcast)
+11-6. 第一個client輸入"/post String Java"
+兩個clients皆會顯示，"aaa posted message '4' in String: Java"
+
+//(5%)
+
+12.(以下測/remove)
+12-1. 第二個client輸入"/remove 1"
+兩個clients皆會顯示，"bbb remove message '1': Project1 is really easy."
+12-2. 第一個client輸入"/remove 2 aa bb cc"
+兩個clients皆會顯示，"aaa remove message '2': Project2 is easier than project1."
+12-3. 第一個client輸入"/remove 1bb"
+第一個client顯示，"Error: No such msg id."
+12-4. 第一個client輸入"/remove 1"
+第一個client顯示，"Error: No such msg id."
+12-5. 第二個client輸入"/remove "
+第二個client顯示，"Error: No msg id."
+
+//(5%)
+
+13.第三個client：
+輸入"ccc"
+第一、二個clients皆會顯示，"ccc is connecting to the chat server"
+第三個client顯示如下：
+ccc is connecting to the chat server
+*******************************************
+** <ccc>, welcome to the chat system.
+*******************************************
+aaa posted message '3' in String:
+aaa posted message '4' in String: Java
+
+14.第二個client：
+輸入"/showPost "
+會顯示如下：
+aaa posted message '3' in String:
+aaa posted message '4' in String: Java
+
+//(5%)
+
+15.第二個client：
+輸入"/kick aaa"
+再輸入"/who aa qqqq"
+會顯示如下：
+Name IP/port
+bbb: xxx.xxx.xxx.xxx/xxxx <-- myself
+ccc: xxx.xxx.xxx.xxx/xxxx
+
+//(5%)
+
+16.(測/leave)()
+16-1. 第二個client輸入"/leave "
+16-2. 第三個client輸入"/who "
+第三個client會顯示如下：
+Name IP/port
+ccc: xxx.xxx.xxx.xxx/xxxx <-- myself
+
+//(5%)
+
+17.第一個client：(測/connect)
+17-1. 輸入"/yell I'm not here."
+沒有任何反應
+17-2. 輸入"/connect localhost 6677" (會連到6677那台server)
+會prompt出"Username:"
+17-3. 輸入"newaaa"，會顯示如下：
+newaaa is connecting to the chat server
+*******************************************
+** <newaaa>, welcome to the chat system.
+*******************************************
+17-4. 輸入"/post String 667788"
+第一個client會顯示"newaaa posted message '1' in String: 667788"
+
+18.第三個client：
+18-1. 輸入"/connect localhost 6677" (會連到6677那台server)
+會prompt出"Username:"
+18-2. 輸入"newccc"，第一個client顯示"newccc is connecting to the chat server"
+第三個client會顯示如下：
+newccc is connecting to the chat server
+*******************************************
+** <newccc>, welcome to the chat system.
+*******************************************
+newaaa posted message '1' in String: 667788
+18-3. 輸入"/who "
+第三個client會顯示如下：
+Name IP/port
+newaaa: xxx.xxx.xxx.xxx/xxxx
+newccc: xxx.xxx.xxx.xxx/xxxx <-- myself
+
+19.直接叉叉關掉第一個client的視窗，第三個client輸入"/who "
+第三個client會顯示如下：
+Name IP/port
+newccc: xxx.xxx.xxx.xxx/xxxx <-- myself
+
+//(5%)
