@@ -3,7 +3,7 @@
 
 <project name="${app.name}" default="run" basedir=".">
   <property file="build.properties" />
-  <description>My description.</description>
+  <description>${app.description}</description>
   <path id="classpath">
     <fileset dir="${lib.dir}" includes="**/*.jar"/>
   </path>
