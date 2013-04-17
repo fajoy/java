@@ -36,7 +36,7 @@ public class HDFSHelper {
 		HDFSHelper fs=new HDFSHelper();
 		fs.copyFromStdin(System.in, "./tmpaa");
 		fs.mkdir("./aaaaaa");
-		fs.ls("./", true);
+		fs.list("./", true);
 		fs.cat("./tmpaa", true);
 		System.exit(0);
 	}
@@ -51,6 +51,27 @@ public class HDFSHelper {
 		fs.close();
 	}
 
+	public void list(String srcf,boolean recursive) throws IOException{
+		Path srcPath = new Path(srcf);
+		FileSystem srcFs = srcPath.getFileSystem(this.getConf());
+		FileStatus[] srcs = srcFs.globStatus(srcPath);
+		if (srcs == null || srcs.length == 0) {
+			return;
+		}
+		for (int i = 0; i < srcs.length; i++) {
+			list(srcs[i], srcFs, recursive);
+		}
+	}
+	public void list(FileStatus srcs,FileSystem srcFs,boolean recursive) throws IOException{
+		Path path=srcs.getPath();
+		System.out.print(srcs.getLen()+"\t"+path);
+		if (recursive && srcs.isDir()) {
+			FileStatus[] stats=srcFs.listStatus(path);
+			for(int i=0;i<stats.length;i++){
+				list(stats[i], srcFs, recursive);
+			}
+		}
+	}
 	public void ls(String srcf,boolean recursive) throws IOException {
 		Path srcPath = new Path(srcf);
 		FileSystem srcFs = srcPath.getFileSystem(this.getConf());
