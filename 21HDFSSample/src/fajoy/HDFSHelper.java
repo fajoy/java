@@ -37,6 +37,7 @@ public class HDFSHelper {
 		fs.copyFromStdin(System.in, "./tmpaa");
 		fs.mkdir("./aaaaaa");
 		fs.ls("./", true);
+		fs.cat("./tmpaa", true);
 		System.exit(0);
 	}
 	
@@ -123,6 +124,38 @@ public class HDFSHelper {
 	}
 
 	
+	public   void cat(final String src, boolean verifyChecksum) throws IOException {
+	    //cat behavior in Linux
+	    //  [~/1207]$ ls ?.txt
+	    //  x.txt  z.txt
+	    //  [~/1207]$ cat x.txt y.txt z.txt
+	    //  xxx
+	    //  cat: y.txt: No such file or directory
+	    //  zzz
+
+	    Path srcPattern = new Path(src);
+	    new DelayedExceptionThrowing() {
+	      @Override
+	      void process(Path p, FileSystem srcFs) throws IOException {
+	        printToStdout(srcFs.open(p));
+	      }
+	    }.globAndProcess(srcPattern, getSrcFileSystem(srcPattern, verifyChecksum));
+	  }
+	
+
+	  /**
+	   * Print from src to stdout.
+	   */
+	  private void printToStdout(InputStream in) throws IOException {
+	    try {
+	      IOUtils.copyBytes(in, System.out, getConf(), false);
+	    } finally {
+	      in.close();
+	    }
+	  }
+
+
+
 	private void copyFromStdin(InputStream in, String path) throws IOException {
 		FileSystem fs=FileSystem.get(getConf());
 		Path dst=new Path(path);
@@ -170,5 +203,38 @@ public class HDFSHelper {
 		}
 		return null;
 	}
+	
+	  /**
+	   * Return the {@link FileSystem} specified by src and the conf.
+	   * It the {@link FileSystem} supports checksum, set verifyChecksum.
+	   */
+	  private FileSystem getSrcFileSystem(Path src, boolean verifyChecksum) throws IOException {
+	    FileSystem srcFs = src.getFileSystem(getConf());
+	    srcFs.setVerifyChecksum(verifyChecksum);
+	    return srcFs;
+	  }
+	  
+	
+	  /**
+	   * Accumulate exceptions if there is any.  Throw them at last.
+	   */
+	  private abstract class DelayedExceptionThrowing {
+	    abstract void process(Path p, FileSystem srcFs) throws IOException;
+
+	    final void globAndProcess(Path srcPattern, FileSystem srcFs
+	        ) throws IOException {
+	      List<IOException> exceptions = new ArrayList<IOException>();
+	      for(Path p : FileUtil.stat2Paths(srcFs.globStatus(srcPattern),
+	                                       srcPattern))
+	        try { process(p, srcFs); }
+	        catch(IOException ioe) { exceptions.add(ioe); }
+
+	      if (!exceptions.isEmpty())
+	        if (exceptions.size() == 1)
+	          throw exceptions.get(0);
+	        else
+	          throw new IOException("Multiple IOExceptions: " + exceptions);
+	    }
+	  }
 
 }
