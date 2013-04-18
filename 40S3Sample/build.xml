@@ -8,10 +8,6 @@
     <fileset dir="${lib.dir}" includes="**/*.jar"/>
   </path>
 
-  <manifestclasspath property="jar.classpath" jarfile="${build.dir}/${jar.file}">
-      <classpath refid="classpath" />
-  </manifestclasspath>
-
     <!-- Initialization -->
   <target name="init" description="Prepare needed directories.">
     <echo>Init "${app.name}"</echo>
@@ -42,13 +38,21 @@
      <delete dir="${jar.dir}"/>
      <mkdir dir="${jar.dir}"/>
 	 <mkdir dir="${classes.dir}/${lib.dir}"/>
-	 <copy todir="${classes.dir}/${lib.dir}">
-		<fileset dir="${lib.dir}" />
- 	 </copy>
+     <!--
+     <copy todir="${classes.dir}/${lib.dir}" flatten="true">
+       <fileset dir="${lib.dir}">
+            <include name="**/*.jar" />
+       </fileset>
+    </copy>
+    -->
+    <manifestclasspath property="jar.classpath" jarfile="${build.dir}">
+      <classpath refid="classpath" />
+    </manifestclasspath>
     <jar destfile="${jar.dir}/${app.name}-${app.version}.jar" basedir="${classes.dir}">
+      <zipgroupfileset dir="${lib.dir}" includes="**/*.jar" />
       <manifest>
         <attribute name="Main-Class" value="${main.class}"/>
-        <attribute name="Class-Path" value="${jar.classpath}" />
+        <attribute name="Class-Path" value="lib/*.jar" /> 
       </manifest>
     </jar>
   </target>
@@ -56,16 +60,16 @@
     <!-- Run application -->
   <target name="run" depends="jar">
     <echo>java -jar ${jar.dir}/${app.name}-${app.version}.jar </echo>
-    <!--
     <java jar="${jar.dir}/${app.name}-${app.version}.jar" 
         fork="true">
     </java>
-    -->
+    <!--
     <java fork="true" classname="${main.class}">
       <classpath>
          <path refid="classpath"/>
          <path location="${jar.dir}/${app.name}-${app.version}.jar"/>
       </classpath>
     </java>
+    -->
   </target>
 </project>
