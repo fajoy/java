@@ -8,6 +8,10 @@
     <fileset dir="${lib.dir}" includes="**/*"/>
   </path>
 
+   <manifestclasspath property="jar.classpath" jarfile="${build.dir}/${jar.file}">
+       <classpath refid="classpath" />
+   </manifestclasspath>
+
     <!-- Initialization -->
   <target name="init" description="Prepare needed directories.">
     <echo>Init "${app.name}"</echo>
