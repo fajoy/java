@@ -8,6 +8,10 @@
     <fileset dir="${lib.dir}" includes="**/*.jar"/>
   </path>
 
+  <manifestclasspath property="jar.classpath" jarfile="${build.dir}">
+      <classpath refid="classpath" />
+  </manifestclasspath>
+
     <!-- Initialization -->
   <target name="init" description="Prepare needed directories.">
     <echo>Init "${app.name}"</echo>
@@ -44,7 +48,7 @@
     <jar destfile="${jar.dir}/${app.name}-${app.version}.jar" basedir="${classes.dir}">
       <manifest>
         <attribute name="Main-Class" value="${main.class}"/>
-        <attribute name="Class-Path" value="*.jar " />
+        <attribute name="Class-Path" value="${jar.classpath}" />
       </manifest>
     </jar>
   </target>
