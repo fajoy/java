@@ -25,8 +25,7 @@ import java.io.FileNotFoundException;
 import java.text.SimpleDateFormat;
 
 public class HDFSHelper {
-	public static final SimpleDateFormat dateForm = new SimpleDateFormat(
-			"yyyy-MM-dd HH:mm");
+	public static final SimpleDateFormat dateForm = new SimpleDateFormat("yyyy-MM-dd HH:mm");
 
 	public HDFSHelper() {
 
@@ -37,12 +36,6 @@ public class HDFSHelper {
 	}
 
 	public static void main(String[] args) throws Exception {
-		HDFSHelper fs = new HDFSHelper();
-		fs.copyFromStdin(System.in, "./tmpaa");
-		fs.mkdir("./aaaaaa");
-		fs.list("./", true);
-		fs.cat("./tmpaa", true);
-		fs.delete("./tmpaa", true, true);
 		System.exit(0);
 	}
 
@@ -50,18 +43,13 @@ public class HDFSHelper {
 		FileSystem fs = FileSystem.get(getConf());
 		Path path = new Path(dir);
 		if (fs.exists(path)) {
-			System.out.println("Dir " + dir + " already exists!");
+			System.err.println("Dir " + dir + " already exists!");
 			return;
 		}
 		fs.close();
 	}
 
 	public void delete(String srcf, final boolean recursive,final boolean skipTrash) throws IOException {
-		// rm behavior in Linux
-		// [~/1207]$ ls ?.txt
-		// x.txt z.txt
-		// [~/1207]$ rm x.txt y.txt z.txt
-		// rm: cannot remove `y.txt': No such file or directory
 		Path srcPattern = new Path(srcf);
 		new DelayedExceptionThrowing() {
 			@Override
@@ -78,8 +66,7 @@ public class HDFSHelper {
 	      fs = srcFs.getFileStatus(src);
 	    } catch (FileNotFoundException fnfe) {
 	      // Have to re-throw so that console output is as expected
-	      throw new FileNotFoundException("cannot remove "
-	          + src + ": No such file or directory.");
+	      throw new FileNotFoundException("cannot remove " + src + ": No such file or directory.");
 	    }
 
 	    if (fs.isDir() && !recursive) {
@@ -141,8 +128,7 @@ public class HDFSHelper {
 		FileSystem srcFs = srcPath.getFileSystem(this.getConf());
 		FileStatus[] srcs = srcFs.globStatus(srcPath);
 		if (srcs == null || srcs.length == 0) {
-			throw new FileNotFoundException("Cannot access " + srcf
-					+ ": No such file or directory.");
+			throw new FileNotFoundException("Cannot access " + srcf	+ ": No such file or directory.");
 		}
 
 		boolean printHeader = (srcs.length == 1) ? true : false;
@@ -152,8 +138,7 @@ public class HDFSHelper {
 		}
 	}
 
-	private int ls(FileStatus src, FileSystem srcFs, boolean recursive,
-			boolean printHeader) throws IOException {
+	private int ls(FileStatus src, FileSystem srcFs, boolean recursive,	boolean printHeader) throws IOException {
 		final String cmd = recursive ? "lsr" : "ls";
 		final FileStatus[] items = shellListStatus(cmd, srcFs, src);
 		if (items == null) {
@@ -170,8 +155,7 @@ public class HDFSHelper {
 
 			for (int i = 0; i < items.length; i++) {
 				FileStatus stat = items[i];
-				int replication = String.valueOf(stat.getReplication())
-						.length();
+				int replication = String.valueOf(stat.getReplication())	.length();
 				int len = String.valueOf(stat.getLen()).length();
 				int owner = String.valueOf(stat.getOwner()).length();
 				int group = String.valueOf(stat.getGroup()).length();
@@ -189,13 +173,10 @@ public class HDFSHelper {
 			for (int i = 0; i < items.length; i++) {
 				FileStatus stat = items[i];
 				Path cur = stat.getPath();
-				String mdate = dateForm.format(new Date(stat
-						.getModificationTime()));
+				String mdate = dateForm.format(new Date(stat.getModificationTime()));
 
-				System.out.print((stat.isDir() ? "d" : "-")
-						+ stat.getPermission() + " ");
-				System.out.printf("%" + maxReplication + "s ",
-						(!stat.isDir() ? stat.getReplication() : "-"));
+				System.out.print((stat.isDir() ? "d" : "-")	+ stat.getPermission() + " ");
+				System.out.printf("%" + maxReplication + "s ",(!stat.isDir() ? stat.getReplication() : "-"));
 				if (maxOwner > 0)
 					System.out.printf("%-" + maxOwner + "s ", stat.getOwner());
 				if (maxGroup > 0)
@@ -211,8 +192,7 @@ public class HDFSHelper {
 		}
 	}
 
-	private static FileStatus[] shellListStatus(String cmd, FileSystem srcFs,
-			FileStatus src) {
+	private static FileStatus[] shellListStatus(String cmd, FileSystem srcFs,FileStatus src) {
 		if (!src.isDir()) {
 			FileStatus[] files = { src };
 			return files;
@@ -221,40 +201,26 @@ public class HDFSHelper {
 		try {
 			FileStatus[] files = srcFs.listStatus(path);
 			if (files == null) {
-				System.err.println(cmd + ": could not get listing for '" + path
-						+ "'");
+				System.err.println(cmd + ": could not get listing for '" + path	+ "'");
 			}
 			return files;
 		} catch (IOException e) {
-			System.err.println(cmd + ": could not get get listing for '" + path
-					+ "' : " + e.getMessage().split("\n")[0]);
+			System.err.println(cmd + ": could not get get listing for '" + path	+ "' : " + e.getMessage().split("\n")[0]);
 		}
 		return null;
 	}
 
-	public void cat(final String src, boolean verifyChecksum)
-			throws IOException {
-		// cat behavior in Linux
-		// [~/1207]$ ls ?.txt
-		// x.txt z.txt
-		// [~/1207]$ cat x.txt y.txt z.txt
-		// xxx
-		// cat: y.txt: No such file or directory
-		// zzz
-
+	public void cat(final String src, boolean verifyChecksum) throws IOException {
 		Path srcPattern = new Path(src);
 		new DelayedExceptionThrowing() {
 			@Override
 			void process(Path p, FileSystem srcFs) throws IOException {
 				printToStdout(srcFs.open(p));
 			}
-		}.globAndProcess(srcPattern,
-				getSrcFileSystem(srcPattern, verifyChecksum));
+		}.globAndProcess(srcPattern,getSrcFileSystem(srcPattern, verifyChecksum));
 	}
 
-	/**
-	 * Print from src to stdout.
-	 */
+	
 	private void printToStdout(InputStream in) throws IOException {
 		try {
 			IOUtils.copyBytes(in, System.out, getConf(), false);
@@ -263,16 +229,14 @@ public class HDFSHelper {
 		}
 	}
 
-	private void copyFromStdin(InputStream in, String path) throws IOException {
+	private void copyFromStream(InputStream in, String path) throws IOException {
 		FileSystem fs = FileSystem.get(getConf());
 		Path dst = new Path(path);
 		if (fs.isDirectory(dst)) {
-			throw new IOException(
-					"When source is stdin, destination must be a file.");
+			throw new IOException("When source is stdin, destination must be a file.");
 		}
 		if (fs.exists(dst)) {
-			throw new IOException("Target " + dst.toString()
-					+ " already exists.");
+			throw new IOException("Target " + dst.toString()+ " already exists.");
 		}
 		FSDataOutputStream out = fs.create(dst);
 		try {
@@ -301,8 +265,7 @@ public class HDFSHelper {
 	 * Return the {@link FileSystem} specified by src and the conf. It the
 	 * {@link FileSystem} supports checksum, set verifyChecksum.
 	 */
-	private FileSystem getSrcFileSystem(Path src, boolean verifyChecksum)
-			throws IOException {
+	private FileSystem getSrcFileSystem(Path src, boolean verifyChecksum)throws IOException {
 		FileSystem srcFs = src.getFileSystem(getConf());
 		srcFs.setVerifyChecksum(verifyChecksum);
 		return srcFs;
@@ -313,12 +276,8 @@ public class HDFSHelper {
 	 */
 	private abstract class DelayedExceptionThrowing {
 		abstract void process(Path p, FileSystem srcFs) throws IOException;
-
-		final void globAndProcess(Path srcPattern, FileSystem srcFs)
-				throws IOException {
-			List<IOException> exceptions = new ArrayList<IOException>();
-			for (Path p : FileUtil.stat2Paths(srcFs.globStatus(srcPattern),
-					srcPattern))
+		final void globAndProcess(Path srcPattern, FileSystem srcFs)throws IOException { List<IOException> exceptions = new ArrayList<IOException>();
+			for (Path p : FileUtil.stat2Paths(srcFs.globStatus(srcPattern),	srcPattern))
 				try {
 					process(p, srcFs);
 				} catch (IOException ioe) {
@@ -329,8 +288,7 @@ public class HDFSHelper {
 				if (exceptions.size() == 1)
 					throw exceptions.get(0);
 				else
-					throw new IOException("Multiple IOExceptions: "
-							+ exceptions);
+					throw new IOException("Multiple IOExceptions: "	+ exceptions);
 		}
 	}
 
