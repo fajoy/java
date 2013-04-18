@@ -8,7 +8,7 @@
     <fileset dir="${lib.dir}" includes="**/*.jar"/>
   </path>
 
-  <manifestclasspath property="jar.classpath" jarfile="${build.dir}">
+  <manifestclasspath property="jar.classpath" jarfile="${build.dir}/${jar.file}">
       <classpath refid="classpath" />
   </manifestclasspath>
 
