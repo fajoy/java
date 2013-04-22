@@ -106,27 +106,37 @@ public class CloudPipe {
         String nowStr=dateForm.format(now);
         
         String newbucketName="out"+nowStr;
+        try{
         s3.createBucket(newbucketName);
+        }catch(Exception e){
+        	
+        }
         System.out.println("create bucket:"+newbucketName);
         Path srcPath=new Path ("./"); 
         FileSystem srcFs = srcPath.getFileSystem(new Configuration());
-		FileStatus[] srcs = srcFs.globStatus(srcPath);
-		
-		for (FileStatus  fss :srcs){
-	
-			if(fss.isDir()){
-				System.out.println("dir:"+fss.getPath());			
-			}else{
-				System.out.println("file:"+fss.getPath()+" size:"+fss.getLen());
-				InputStream hdfsin =getInputStreamFormHDFS(fss.getPath().getName());
-				copyToS3(hdfsin,s3, newbucketName, fss.getPath().getName());
-			}		
+		FileStatus[] srcss = srcFs.globStatus(srcPath);
+		for (FileStatus  srcs :srcss){
+			hdfs2s3(srcs,srcFs,s3,newbucketName);
 		}
 		
 		System.exit(0);
 	}
 	
-	
+	public static void hdfs2s3(FileStatus srcs,FileSystem  srcFs,AmazonS3 s3,String bucketName) throws IOException{
+		Path path = srcs.getPath();
+		System.out.println(srcs.getLen() + "\t" + path);
+		if (srcs.isDir()) {
+			System.out.println("dir:"+srcs.getPath());
+			FileStatus[] stats = srcFs.listStatus(path);
+			for (int i = 0; i < stats.length; i++) {
+				hdfs2s3(stats[i], srcFs,s3,bucketName);
+			}
+			return;
+		}
+		System.out.println("file:"+srcs.getPath()+" size:"+srcs.getLen());
+		InputStream hdfsin =getInputStreamFormHDFS(srcs.getPath().getName());
+		copyToS3(hdfsin,s3, bucketName, srcs.getPath().getName());
+	}
 	
 	public static InputStream getInputStreamFormLocal(String path) throws IOException {
 		return new FileInputStream(path);
