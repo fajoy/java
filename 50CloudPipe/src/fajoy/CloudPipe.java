@@ -5,6 +5,7 @@ import java.io.InputStream;
 import java.util.StringTokenizer;
 
 import org.apache.hadoop.conf.Configuration;
+import org.apache.hadoop.fs.FileStatus;
 import org.apache.hadoop.fs.Path;
 import org.apache.hadoop.fs.FileSystem;
 import org.apache.hadoop.io.IOUtils;
@@ -62,7 +63,7 @@ import com.amazonaws.auth.AWSCredentials;
 import com.amazonaws.auth.BasicAWSCredentials;
 
 public class CloudPipe {
-	public static final SimpleDateFormat dateForm = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+	public static final SimpleDateFormat dateForm = new SimpleDateFormat("yyyyMMddHHmmss");
 	public static final int BuffSize=4096; 
 	public CloudPipe() {
 
@@ -100,7 +101,28 @@ public class CloudPipe {
             else
             	copyToHDFS(s3in, obj.getKey(), false);
         }
-        		
+        
+        Date now = new Date();
+        String nowStr=dateForm.format(now);
+        
+        String newbucketName="out"+nowStr;
+        s3.createBucket(newbucketName);
+        System.out.println("create bucket:"+newbucketName);
+        Path srcPath=new Path ("./"); 
+        FileSystem srcFs = srcPath.getFileSystem(new Configuration());
+		FileStatus[] srcs = srcFs.globStatus(srcPath);
+		
+		for (FileStatus  fss :srcs){
+	
+			if(fss.isDir()){
+				System.out.println("dir:"+fss.getPath());			
+			}else{
+				System.out.println("file:"+fss.getPath()+" size:"+fss.getLen());
+				InputStream hdfsin =getInputStreamFormHDFS(fss.getPath().getName());
+				copyToS3(hdfsin,s3, newbucketName, fss.getPath().getName());
+			}		
+		}
+		
 		System.exit(0);
 	}
 	
