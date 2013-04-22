@@ -94,7 +94,7 @@ public class CloudPipe {
         String bucketName="hadoop";
         ObjectListing objectListing = s3.listObjects(bucketName);
         for (S3ObjectSummary obj : objectListing.getObjectSummaries()) {
-            System.out.println(" - " + obj.getKey() + "  " + "(size = " + obj.getSize() + ")");
+            System.out.println(" - s3://"+ bucketName+"/"+ obj.getKey() + "  " + "(size = " + obj.getSize() + ")");
             InputStream s3in= getInputStreamFormS3(s3, bucketName, obj.getKey());
             if(obj.getKey().endsWith("/"))
             	mkdirHDFS("./"+obj.getKey());
@@ -124,7 +124,7 @@ public class CloudPipe {
 	
 	public static void hdfs2s3(FileStatus srcs,FileSystem  srcFs,AmazonS3 s3,String bucketName) throws IOException{
 		Path path = srcs.getPath();
-		System.out.println(srcs.getLen() + "\t" + path);
+		System.out.println(" - " +path + "  " + "(size = " + srcs.getLen() + ")");
 		if (srcs.isDir()) {
 			System.out.println("dir:"+srcs.getPath());
 			FileStatus[] stats = srcFs.listStatus(path);
@@ -133,9 +133,10 @@ public class CloudPipe {
 			}
 			return;
 		}
+		
 		System.out.println("file:"+srcs.getPath()+" size:"+srcs.getLen());
-		InputStream hdfsin =getInputStreamFormHDFS(srcs.getPath().getName());
-		copyToS3(hdfsin,s3, bucketName, srcs.getPath().getName());
+		InputStream hdfsin =getInputStreamFormHDFS(srcs.getPath().toString());
+		copyToS3(hdfsin,s3, bucketName, srcs.getPath().toString().replace("hdfs://workstation:8020/user/", ""),srcs.getLen());
 	}
 	
 	public static InputStream getInputStreamFormLocal(String path) throws IOException {
@@ -172,8 +173,9 @@ public class CloudPipe {
 		}
 		
 	}
-	public static void copyToS3(InputStream input,AmazonS3 s3,String bucketName,String key) throws IOException {
+	public static void copyToS3(InputStream input,AmazonS3 s3,String bucketName,String key,long size) throws IOException {
 		ObjectMetadata metadata=new ObjectMetadata();
+		metadata.setContentLength(size);
 		PutObjectRequest req=new PutObjectRequest(bucketName, key, input, metadata);
 		s3.putObject(req);		
 	}
