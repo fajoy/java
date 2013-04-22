@@ -87,15 +87,25 @@ public class CloudPipe {
         System.out.println(secretKey);
         System.out.println(endpoint);
         
-        copyToHDFS(getInputStreamFormLocal(configFile), "./.s3", true);
+        //copyToHDFS(getInputStreamFormLocal(configFile), "./.s3",false);
         AmazonS3 s3=getS3(accessKey, secretKey, endpoint);
         
-        String b="s3_test";
-        s3.createBucket(b);
-        copyToS3(getInputStreamFormLocal(configFile),s3,b, ".s3");
-		
+        String bucketName="hadoop";
+        ObjectListing objectListing = s3.listObjects(bucketName);
+        for (S3ObjectSummary obj : objectListing.getObjectSummaries()) {
+            System.out.println(" - " + obj.getKey() + "  " + "(size = " + obj.getSize() + ")");
+            InputStream s3in= getInputStreamFormS3(s3, bucketName, obj.getKey());
+            if(obj.getKey().endsWith("/"))
+            	mkdirHDFS("./"+obj.getKey());
+            else
+            	copyToHDFS(s3in, obj.getKey(), false);
+        }
+        		
 		System.exit(0);
 	}
+	
+	
+	
 	public static InputStream getInputStreamFormLocal(String path) throws IOException {
 		return new FileInputStream(path);
 	}
@@ -136,6 +146,15 @@ public class CloudPipe {
 		s3.putObject(req);		
 	}
 	
+	public static void mkdirHDFS(String dir) throws IOException {
+		FileSystem fs = FileSystem.get(new Configuration() );
+		Path path = new Path(dir);
+		if (fs.exists(path)) {
+			System.err.println("Dir " + dir + " already exists!");
+			return;
+		}
+		fs.close();
+	}
 	
 	public static Properties getProperties(InputStream in) {
 		Properties properties = new Properties();
