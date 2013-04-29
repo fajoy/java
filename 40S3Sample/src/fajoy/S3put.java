@@ -11,6 +11,7 @@ import java.io.OutputStreamWriter;
 import java.io.Writer;
 import java.util.Properties;
 import java.util.UUID;
+  
 
 import com.amazonaws.AmazonClientException;
 import com.amazonaws.AmazonServiceException;
@@ -33,7 +34,7 @@ import java.util.List;
 import com.amazonaws.auth.AWSCredentials;
 import com.amazonaws.auth.BasicAWSCredentials;
 import java.io.File;
-
+import java.util.ArrayList;
 public class S3put {
     public static void main(String[] args) throws IOException {
     	 String accessKey = "";
@@ -72,22 +73,38 @@ public class S3put {
          s3.setS3ClientOptions(clientOptions );
          
 		  // Directory path here
-		  String path = "./data"; 
-		  File folder = new File(path);
-		  File[] listOfFiles = folder.listFiles(); 
-		 
-		  
-		  for (int i = 0; i < listOfFiles.length; i++) 
+		  String path = "./src"; 
+		  File dir = new File(path);
+		  ArrayList<File> flist = getFlies(dir); 
+		  for (int i = 0; i < flist.size(); i++) 
 		  {
-		   if (listOfFiles[i].isFile()) 
-		   {
-			   String key=listOfFiles[i].getPath();
-			   InputStream in= getInputStreamFormLocal(key);
-			   System.out.format("copy %s\n",key);
-			   copyToS3(in, s3, bucketName, key,listOfFiles[i].getTotalSpace() );
-		   }
+			  File f= flist.get(i);
+			  String key=f.getPath();
+			  System.out.format("copy %s %s\n",f.length(),key);
+              InputStream in= getInputStreamFormLocal(key);
+              copyToS3(in, s3, bucketName, key,f.length()) ;
 		  }
+		  
+		  
          
+    }
+    public static ArrayList<File> getFlies(File dir){
+    	File[] list=dir.listFiles();
+    	ArrayList<File> a=new ArrayList<File>();
+    	for (int i = 0; i < list.length; i++) 
+		  {
+		   if (list[i].isFile()) 
+		   {
+			   a.add(list[i]);
+		   }
+		   
+		   if (list[i].isDirectory()) 
+		   {
+			   a.addAll(getFlies(list[i]));
+		   }
+		   
+		  }
+    	return a;
     }
 
 	public static InputStream getInputStreamFormLocal(String path) throws IOException {
