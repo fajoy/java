@@ -87,10 +87,10 @@ public class CloudPipe {
         accessKey=properties.getProperty("accessKey");
         secretKey=properties.getProperty("secretKey");
         endpoint=properties.getProperty("endpoint");
-        accessKey=properties.getProperty("inbucket");
-        secretKey=properties.getProperty("outbucket");
-        endpoint=properties.getProperty("indir");
-        endpoint=properties.getProperty("outdir");
+        inbucket=properties.getProperty("inbucket");
+        outbucket=properties.getProperty("outbucket");
+        indir=properties.getProperty("indir");
+        outdir=properties.getProperty("outdir");
         
         //System.out.println(accessKey);
         //System.out.println(secretKey);
@@ -110,7 +110,7 @@ public class CloudPipe {
         
         String bucketName=inbucket;
         
-        ObjectListing objectListing = s3.listObjects(bucketName,indir);
+        ObjectListing objectListing = s3.listObjects(bucketName);
         for (S3ObjectSummary obj : objectListing.getObjectSummaries()) {
             System.out.println(" - s3://"+ bucketName+"/"+ obj.getKey() + "  " + "(size = " + obj.getSize() + ")");
             InputStream s3in= getInputStreamFormS3(s3, bucketName, obj.getKey());
