@@ -74,6 +74,10 @@ public class CloudPipe {
         String accessKey = "";
         String secretKey = "";
         String endpoint="";
+        String inbucket="";
+        String outbucket="";
+        String indir="";
+        String outdir="";
         
         String configFile = System.getProperties().getProperty("user.dir")+"/.s3";
         System.out.print(configFile);
@@ -83,15 +87,20 @@ public class CloudPipe {
         accessKey=properties.getProperty("accessKey");
         secretKey=properties.getProperty("secretKey");
         endpoint=properties.getProperty("endpoint");
-
-        System.out.println(accessKey);
-        System.out.println(secretKey);
-        System.out.println(endpoint);
+        accessKey=properties.getProperty("inbucket");
+        secretKey=properties.getProperty("outbucket");
+        endpoint=properties.getProperty("indir");
+        endpoint=properties.getProperty("outdir");
+        
+        //System.out.println(accessKey);
+        //System.out.println(secretKey);
+        //System.out.println(endpoint);
         
         //copyToHDFS(getInputStreamFormLocal(configFile), "./.s3",false);
         AmazonS3 s3=getS3(accessKey, secretKey, endpoint);
         
-        String bucketName="hadoop";
+        String bucketName=inbucket;
+        
         ObjectListing objectListing = s3.listObjects(bucketName);
         for (S3ObjectSummary obj : objectListing.getObjectSummaries()) {
             System.out.println(" - s3://"+ bucketName+"/"+ obj.getKey() + "  " + "(size = " + obj.getSize() + ")");
@@ -134,7 +143,6 @@ public class CloudPipe {
 			return;
 		}
 		
-		System.out.println("file:"+srcs.getPath()+" size:"+srcs.getLen());
 		InputStream hdfsin =getInputStreamFormHDFS(srcs.getPath().toString());
 		copyToS3(hdfsin,s3, bucketName, srcs.getPath().toString().replace("hdfs://workstation:8020/user/", ""),srcs.getLen());
 	}
