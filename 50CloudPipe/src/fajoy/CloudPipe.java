@@ -97,7 +97,16 @@ public class CloudPipe {
         //System.out.println(endpoint);
         
         //copyToHDFS(getInputStreamFormLocal(configFile), "./.s3",false);
-        AmazonS3 s3=getS3(accessKey, secretKey, endpoint);
+        
+        
+        AWSCredentials credentials = new BasicAWSCredentials(accessKey, secretKey);
+        AmazonS3 s3 = new AmazonS3Client(credentials);
+        s3.setEndpoint(endpoint);
+        S3ClientOptions clientOptions =new S3ClientOptions();
+        clientOptions.setPathStyleAccess(true);
+        s3.setS3ClientOptions(clientOptions );
+        
+        
         
         String bucketName=inbucket;
         
