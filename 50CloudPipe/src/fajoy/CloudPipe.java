@@ -101,7 +101,7 @@ public class CloudPipe {
         
         String bucketName=inbucket;
         
-        ObjectListing objectListing = s3.listObjects(bucketName);
+        ObjectListing objectListing = s3.listObjects(bucketName,indir);
         for (S3ObjectSummary obj : objectListing.getObjectSummaries()) {
             System.out.println(" - s3://"+ bucketName+"/"+ obj.getKey() + "  " + "(size = " + obj.getSize() + ")");
             InputStream s3in= getInputStreamFormS3(s3, bucketName, obj.getKey());
@@ -111,16 +111,11 @@ public class CloudPipe {
             	copyToHDFS(s3in, obj.getKey(), false);
         }
         
-        Date now = new Date();
-        String nowStr=dateForm.format(now);
+        //Date now = new Date();
+        //String nowStr=dateForm.format(now);
         
-        String newbucketName="out"+nowStr;
-        try{
-        s3.createBucket(newbucketName);
-        }catch(Exception e){
-        	
-        }
-        System.out.println("create bucket:"+newbucketName);
+        String newbucketName=outbucket;
+        
         Path srcPath=new Path ("./"); 
         FileSystem srcFs = srcPath.getFileSystem(new Configuration());
 		FileStatus[] srcss = srcFs.globStatus(srcPath);
