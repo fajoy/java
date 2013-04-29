@@ -38,12 +38,21 @@
      <delete dir="${jar.dir}"/>
      <mkdir dir="${jar.dir}"/>
 	 <mkdir dir="${classes.dir}/${lib.dir}"/>
-	 <copy todir="${classes.dir}/${lib.dir}">
-		<fileset dir="${lib.dir}" />
- 	 </copy>
+     <!--
+     <copy todir="${classes.dir}/${lib.dir}" flatten="true">
+       <fileset dir="${lib.dir}">
+            <include name="**/*.jar" />
+       </fileset>
+    </copy>
+    -->
+    <manifestclasspath property="jar.classpath" jarfile="${build.dir}">
+      <classpath refid="classpath" />
+    </manifestclasspath>
     <jar destfile="${jar.dir}/${app.name}-${app.version}.jar" basedir="${classes.dir}">
+      <zipgroupfileset dir="${lib.dir}" includes="**/*.jar" />
       <manifest>
         <attribute name="Main-Class" value="${main.class}"/>
+        <attribute name="Class-Path" value="lib/*.jar" /> 
       </manifest>
     </jar>
   </target>
