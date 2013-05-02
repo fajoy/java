@@ -16,7 +16,7 @@ public abstract class HDFSAction {
 	void sub_run(FileSystem fs,Path path, boolean recursive) {
 		try {
 			FileStatus[] list;
-			list = fs.globStatus(path);
+			list = fs.listStatus(path);
 			for (int i = 0; i < list.length; i++) {
 				if (list[i].isDir()) {
 					actionDir(fs,list[i].getPath(),list[i]);
