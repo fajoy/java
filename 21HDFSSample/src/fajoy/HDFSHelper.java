@@ -2,23 +2,17 @@ package fajoy;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.StringTokenizer;
 
 import org.apache.hadoop.conf.Configuration;
+import org.apache.hadoop.fs.FileStatus;
 import org.apache.hadoop.fs.Path;
 import org.apache.hadoop.fs.FileSystem;
 import org.apache.hadoop.io.IOUtils;
-import org.apache.hadoop.io.IntWritable;
-import org.apache.hadoop.io.Text;
-import org.apache.hadoop.mapreduce.Job;
-import org.apache.hadoop.mapreduce.Mapper;
-import org.apache.hadoop.mapreduce.Reducer;
-import org.apache.hadoop.mapreduce.lib.input.FileInputFormat;
-import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
-import org.apache.hadoop.util.GenericOptionsParser;
-import org.apache.hadoop.conf.Configured;
+
 
 import org.apache.hadoop.fs.*;
+
+
 import java.util.*;
 import java.io.FileNotFoundException;
 
@@ -31,11 +25,28 @@ public class HDFSHelper {
 
 	}
 
-	public Configuration getConf() {
+	public static Configuration getConf() {
 		return new Configuration();
 	}
 
 	public static void main(String[] args) throws Exception {
+		FileSystem fs = FileSystem.get(getConf());
+		Path path=new Path("./");
+		HDFSAction ls =new HDFSAction() {
+			@Override
+			public void actionDir(FileSystem fs, Path path, FileStatus fileStatus) {
+				System.out.format("%s %10s\t%s\n",fileStatus.getAccessTime(),fileStatus.getLen(),path);
+			};
+			
+			
+			@Override
+			
+			public void actionFile(FileSystem fs, Path path,FileStatus fileStatus) {
+
+				System.out.format("%s %10s\t%s\n",fileStatus.getAccessTime(),fileStatus.getLen(),path);
+			}
+		};
+		ls.run(fs, path, true);
 		System.exit(0);
 	}
 
@@ -111,8 +122,7 @@ public class HDFSHelper {
 		}
 	}
 
-	public void list(FileStatus srcs, FileSystem srcFs, boolean recursive)
-			throws IOException {
+	public void list(FileStatus srcs, FileSystem srcFs, boolean recursive)	throws IOException {
 		Path path = srcs.getPath();
 		System.out.println(srcs.getLen() + "\t" + path);
 		if (recursive && srcs.isDir()) {
