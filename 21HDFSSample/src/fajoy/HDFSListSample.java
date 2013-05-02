@@ -9,13 +9,14 @@ import org.apache.hadoop.fs.FileSystem;
 import org.apache.hadoop.fs.Path;
 
 public class HDFSListSample {
-	public static final SimpleDateFormat dateForm = new SimpleDateFormat("yyyy-MM-dd HH:mm" +
-			"");
+	public static final SimpleDateFormat dateForm = new SimpleDateFormat("yyyy-MM-dd HH:mm");
 	
 	public static void main(String[] args) throws Exception {
 		FileSystem fs = FileSystem.get(new Configuration());
 		Path path=new Path("./");
-		System.out.format("list %s \n",path.toUri().getPath());		
+		FileStatus fileStatus =fs.getFileStatus(path);
+		System.out.format("list FileStatus Path %s \n",fileStatus.getPath());
+		System.out.format("list Uri Path %s \n",fileStatus.getPath().toUri().getPath());		
 		HDFSAction ls =new HDFSAction() {
 			@Override
 			public void actionDir(FileSystem fs, Path path, FileStatus fileStatus) {
