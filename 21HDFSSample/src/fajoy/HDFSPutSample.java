@@ -15,7 +15,7 @@ public class HDFSPutSample {
 
 
 		String src = "src";
-		String dst = "test"+dateForm.format(new Date());
+		final String dst = "sample"+dateForm.format(new Date())+"/";
 		File dir = new File(src);
 		
 		final FileSystem fs = FileSystem.get(new Configuration());
@@ -27,10 +27,11 @@ public class HDFSPutSample {
 				if (!fileSeparator.equals("/"))
 					path = path.replace(fileSeparator, "/");
 				
+				String dstpath=dst+path;
 				try {
 					InputStream is = new FileInputStream(file.getPath());
-					System.out.format("copyToS3 %s => %s \n", file.getPath(),path);
-					HDFSHelper.copyToHDFS(is,fs,path);
+					System.out.format("copyToS3 %s => %s \n", file.getPath(),dstpath);
+					HDFSHelper.copyToHDFS(is,fs,dstpath);
 					
 				} catch (IOException e) {
 					e.printStackTrace();
@@ -43,9 +44,10 @@ public class HDFSPutSample {
 				String path = dir.getPath();
 				if (!fileSeparator.equals("/"))
 					path = path.replace(fileSeparator, "/");
+				String dstpath=dst+path;
 				
 				try {
-					HDFSHelper.mkdir(fs, path);
+					HDFSHelper.mkdir(fs, dstpath);
 				} catch (IOException e) {
 					e.printStackTrace();
 				}
