@@ -50,14 +50,13 @@ public class HDFSHelper {
 		System.exit(0);
 	}
 
-	public void mkdir(String dir) throws IOException {
-		FileSystem fs = FileSystem.get(getConf());
+	public static void mkdir(FileSystem fs, String dir) throws IOException {
 		Path path = new Path(dir);
 		if (fs.exists(path)) {
 			System.err.println("Dir " + dir + " already exists!");
 			return;
 		}
-		fs.close();
+		fs.mkdirs(path);
 	}
 
 	public void delete(String srcf, final boolean recursive,final boolean skipTrash) throws IOException {
@@ -239,12 +238,8 @@ public class HDFSHelper {
 		}
 	}
 
-	private void copyFromStream(InputStream in, String path) throws IOException {
-		FileSystem fs = FileSystem.get(getConf());
+	public static  void copyToHDFS(InputStream in,FileSystem fs, String path) throws IOException {
 		Path dst = new Path(path);
-		if (fs.isDirectory(dst)) {
-			throw new IOException("When source is stdin, destination must be a file.");
-		}
 		if (fs.exists(dst)) {
 			throw new IOException("Target " + dst.toString()+ " already exists.");
 		}
