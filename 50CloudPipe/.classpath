@@ -33,5 +33,6 @@
 	<classpathentry kind="lib" path="lib/third-party/spring-3.0/spring-beans-3.0.7.jar"/>
 	<classpathentry kind="lib" path="lib/third-party/spring-3.0/spring-context-3.0.7.jar"/>
 	<classpathentry kind="lib" path="lib/third-party/spring-3.0/spring-core-3.0.7.jar"/>
+	<classpathentry kind="lib" path="lib/commons-io-2.4.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
