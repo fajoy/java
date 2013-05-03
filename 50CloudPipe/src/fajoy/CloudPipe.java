@@ -27,7 +27,7 @@ public class CloudPipe {
 		AmazonS3 s3 = S3Helper.getS3();
 		String bucketName="test.20130502182644";
 		final FileSystem fs = FileSystem.get(new Configuration());
-		final String dst = fs.getFileStatus((new Path("sample"+dateForm.format(new Date())+"/"))).getPath().toUri().getPath();
+		final String dst = "sample"+dateForm.format(new Date())+"/";
 			
 		
 		S3ObjectAction get=new S3ObjectAction() {
