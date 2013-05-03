@@ -17,9 +17,9 @@ import com.amazonaws.services.s3.AmazonS3;
 import com.amazonaws.services.s3.model.S3ObjectSummary;
 
 
-public class CloudPipe {
+public class S3ToHDFSSample {
 	public static final SimpleDateFormat dateForm = new SimpleDateFormat("yyyyMMddHHmmss");
-	public CloudPipe() {
+	public S3ToHDFSSample() {
 
 	}
 	
