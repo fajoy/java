@@ -1,4 +1,4 @@
-package com.twitter.elephantbird.examples;
+package fajoy.hadoop.json;
 
 import java.io.IOException;
 import java.util.Map;
@@ -16,31 +16,22 @@ import org.apache.hadoop.mapreduce.Mapper;
 import org.apache.hadoop.mapreduce.lib.input.FileInputFormat;
 import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
 import org.apache.hadoop.mapreduce.lib.output.TextOutputFormat;
-import org.apache.hadoop.mapreduce.lib.reduce.LongSumReducer;
 import org.apache.hadoop.util.Tool;
 import org.apache.hadoop.util.ToolRunner;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+public class LzoJsonInputFormatTest extends Configured implements Tool {
+  private static final Logger LOG = LoggerFactory.getLogger(LzoJsonInputFormatTest.class);
 
-public class LzoJsonWordCount extends Configured implements Tool {
-  private static final Logger LOG = LoggerFactory.getLogger(LzoJsonWordCount.class);
+  private LzoJsonInputFormatTest() {}
 
-  private LzoJsonWordCount() {}
-
-  public static class LzoJsonWordCountMapper extends Mapper<LongWritable, MapWritable, Text, LongWritable> {
-    private final LongWritable count_ = new LongWritable();
-    private final Text word_ = new Text();
-
-    @Override
+  public static class LzoJsonWordCountMapper extends Mapper<LongWritable, MapWritable, Text, Text> {
+        @Override
     protected void map(LongWritable key, MapWritable value, Context context) throws IOException, InterruptedException {
-      // Let's assume that our JSON objects consist of key: count pairs, where key is a string and count is an integer.
       for (Map.Entry<Writable, Writable> entry: value.entrySet()) {
-        word_.set((Text)entry.getKey());
-        Text strValue = (Text)entry.getValue();
-        count_.set(Long.parseLong(strValue.toString()));
-        context.write(word_, count_);
-      }
+        context.write((Text)entry.getKey(), (Text)entry.getValue());
+      } 
     }
   }
 
@@ -58,8 +49,7 @@ public class LzoJsonWordCount extends Configured implements Tool {
 
     job.setJarByClass(getClass());
     job.setMapperClass(LzoJsonWordCountMapper.class);
-    job.setCombinerClass(LongSumReducer.class);
-    job.setReducerClass(LongSumReducer.class);
+
 
     // Use the custom LzoTextInputFormat class.
     job.setInputFormatClass(LzoJsonInputFormat.class);
@@ -72,7 +62,7 @@ public class LzoJsonWordCount extends Configured implements Tool {
   }
 
   public static void main(String[] args) throws Exception {
-    int exitCode = ToolRunner.run(new LzoJsonWordCount(), args);
+    int exitCode = ToolRunner.run(new LzoJsonInputFormatTest(), args);
     System.exit(exitCode);
   }
 }
