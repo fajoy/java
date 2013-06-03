@@ -42,13 +42,8 @@
      <delete dir="${jar.dir}"/>
      <mkdir dir="${jar.dir}"/>
 	 <mkdir dir="${classes.dir}/${lib.dir}"/>
-	 <copy todir="${classes.dir}/${lib.dir}">
-		<fileset dir="${lib.dir}" />
- 	 </copy>
-    <jar destfile="${jar.dir}/${app.name}-${app.version}.jar" basedir="${classes.dir}">
-      <manifest>
-        <attribute name="Class-Path" value="${jar.classpath}" />
-      </manifest>
+     <jar destfile="${jar.dir}/${app.name}-${app.version}.jar" basedir="${classes.dir}">
+      <zipgroupfileset dir="${lib.dir}" includes="**/*.jar" />
     </jar>
     <echo>Please run hadoop by
      hadoop jar ${jar.dir}/${app.name}-${app.version}.jar </echo>
