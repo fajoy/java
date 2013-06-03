@@ -47,7 +47,6 @@
  	 </copy>
     <jar destfile="${jar.dir}/${app.name}-${app.version}.jar" basedir="${classes.dir}">
       <manifest>
-        <attribute name="Main-Class" value="${main.class}"/>
         <attribute name="Class-Path" value="${jar.classpath}" />
       </manifest>
     </jar>

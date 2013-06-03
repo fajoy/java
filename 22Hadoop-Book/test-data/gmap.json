@@ -1,0 +1,1139 @@
+{
+   "results" : [
+      {
+         "address_components" : [
+            {
+               "long_name" : "中華郵政",
+               "short_name" : "中華郵政",
+               "types" : [ "point_of_interest", "establishment" ]
+            },
+            {
+               "long_name" : "43號",
+               "short_name" : "43號",
+               "types" : [ "street_number" ]
+            },
+            {
+               "long_name" : "重慶南路二段",
+               "short_name" : "重慶南路二段",
+               "types" : [ "route" ]
+            },
+            {
+               "long_name" : "龍福里",
+               "short_name" : "龍福里",
+               "types" : [ "sublocality", "political" ]
+            },
+            {
+               "long_name" : "中正區",
+               "short_name" : "中正區",
+               "types" : [ "locality", "political" ]
+            },
+            {
+               "long_name" : "台北市",
+               "short_name" : "北市",
+               "types" : [ "administrative_area_level_2", "political" ]
+            },
+            {
+               "long_name" : "台灣",
+               "short_name" : "TW",
+               "types" : [ "country", "political" ]
+            },
+            {
+               "long_name" : "100",
+               "short_name" : "100",
+               "types" : [ "postal_code" ]
+            }
+         ],
+         "formatted_address" : "100台灣台北市中正區重慶南路二段43號中華郵政",
+         "geometry" : {
+            "location" : {
+               "lat" : 25.03181990,
+               "lng" : 121.5147010
+            },
+            "location_type" : "APPROXIMATE",
+            "viewport" : {
+               "northeast" : {
+                  "lat" : 25.04192940,
+                  "lng" : 121.53070840
+               },
+               "southwest" : {
+                  "lat" : 25.02170950,
+                  "lng" : 121.49869360
+               }
+            }
+         },
+         "types" : [ "point_of_interest", "post_office", "finance", "establishment" ]
+      },
+      {
+         "address_components" : [
+            {
+               "long_name" : "中華郵政",
+               "short_name" : "中華郵政",
+               "types" : [ "point_of_interest", "establishment" ]
+            },
+            {
+               "long_name" : "76號",
+               "short_name" : "76號",
+               "types" : [ "street_number" ]
+            },
+            {
+               "long_name" : "松廉路",
+               "short_name" : "松廉路",
+               "types" : [ "route" ]
+            },
+            {
+               "long_name" : "西村里",
+               "short_name" : "西村里",
+               "types" : [ "sublocality", "political" ]
+            },
+            {
+               "long_name" : "信義區",
+               "short_name" : "信義區",
+               "types" : [ "locality", "political" ]
+            },
+            {
+               "long_name" : "台北市",
+               "short_name" : "北市",
+               "types" : [ "administrative_area_level_2", "political" ]
+            },
+            {
+               "long_name" : "台灣",
+               "short_name" : "TW",
+               "types" : [ "country", "political" ]
+            },
+            {
+               "long_name" : "110",
+               "short_name" : "110",
+               "types" : [ "postal_code" ]
+            }
+         ],
+         "formatted_address" : "110台灣台北市信義區松廉路76號中華郵政",
+         "geometry" : {
+            "location" : {
+               "lat" : 25.0337830,
+               "lng" : 121.5674120
+            },
+            "location_type" : "APPROXIMATE",
+            "viewport" : {
+               "northeast" : {
+                  "lat" : 25.03513198029150,
+                  "lng" : 121.5687609802915
+               },
+               "southwest" : {
+                  "lat" : 25.03243401970850,
+                  "lng" : 121.5660630197085
+               }
+            }
+         },
+         "types" : [ "point_of_interest", "post_office", "finance", "establishment" ]
+      },
+      {
+         "address_components" : [
+            {
+               "long_name" : "中華郵政台北成功郵局",
+               "short_name" : "中華郵政台北成功郵局",
+               "types" : [ "point_of_interest", "establishment" ]
+            },
+            {
+               "long_name" : "12號",
+               "short_name" : "12號",
+               "types" : [ "street_number" ]
+            },
+            {
+               "long_name" : "四維路198巷38弄",
+               "short_name" : "四維路198巷38弄",
+               "types" : [ "route" ]
+            },
+            {
+               "long_name" : "群英里",
+               "short_name" : "群英里",
+               "types" : [ "sublocality", "political" ]
+            },
+            {
+               "long_name" : "大安區",
+               "short_name" : "大安區",
+               "types" : [ "locality", "political" ]
+            },
+            {
+               "long_name" : "台北市",
+               "short_name" : "北市",
+               "types" : [ "administrative_area_level_2", "political" ]
+            },
+            {
+               "long_name" : "台灣",
+               "short_name" : "TW",
+               "types" : [ "country", "political" ]
+            },
+            {
+               "long_name" : "106",
+               "short_name" : "106",
+               "types" : [ "postal_code" ]
+            }
+         ],
+         "formatted_address" : "106台灣台北市大安區四維路198巷38弄12號中華郵政台北成功郵局",
+         "geometry" : {
+            "location" : {
+               "lat" : 25.0265040,
+               "lng" : 121.5459290
+            },
+            "location_type" : "APPROXIMATE",
+            "viewport" : {
+               "northeast" : {
+                  "lat" : 25.02785298029151,
+                  "lng" : 121.5472779802915
+               },
+               "southwest" : {
+                  "lat" : 25.02515501970850,
+                  "lng" : 121.5445800197085
+               }
+            }
+         },
+         "types" : [ "point_of_interest", "post_office", "finance", "establishment" ]
+      },
+      {
+         "address_components" : [
+            {
+               "long_name" : "中華郵政",
+               "short_name" : "中華郵政",
+               "types" : [ "point_of_interest", "establishment" ]
+            },
+            {
+               "long_name" : "89號",
+               "short_name" : "89號",
+               "types" : [ "street_number" ]
+            },
+            {
+               "long_name" : "信義路三段",
+               "short_name" : "信義路三段",
+               "types" : [ "route" ]
+            },
+            {
+               "long_name" : "和安里",
+               "short_name" : "和安里",
+               "types" : [ "sublocality", "political" ]
+            },
+            {
+               "long_name" : "大安區",
+               "short_name" : "大安區",
+               "types" : [ "locality", "political" ]
+            },
+            {
+               "long_name" : "台北市",
+               "short_name" : "北市",
+               "types" : [ "administrative_area_level_2", "political" ]
+            },
+            {
+               "long_name" : "台灣",
+               "short_name" : "TW",
+               "types" : [ "country", "political" ]
+            },
+            {
+               "long_name" : "106",
+               "short_name" : "106",
+               "types" : [ "postal_code" ]
+            }
+         ],
+         "formatted_address" : "106台灣台北市大安區信義路三段89號中華郵政",
+         "geometry" : {
+            "location" : {
+               "lat" : 25.03371360,
+               "lng" : 121.53825730
+            },
+            "location_type" : "APPROXIMATE",
+            "viewport" : {
+               "northeast" : {
+                  "lat" : 25.03506258029150,
+                  "lng" : 121.5396062802915
+               },
+               "southwest" : {
+                  "lat" : 25.03236461970850,
+                  "lng" : 121.5369083197085
+               }
+            }
+         },
+         "types" : [ "point_of_interest", "post_office", "finance", "establishment" ]
+      },
+      {
+         "address_components" : [
+            {
+               "long_name" : "中華郵政",
+               "short_name" : "中華郵政",
+               "types" : [ "point_of_interest", "establishment" ]
+            },
+            {
+               "long_name" : "2之1號",
+               "short_name" : "2之1號",
+               "types" : [ "street_number" ]
+            },
+            {
+               "long_name" : "工業東二路",
+               "short_name" : "工業東二路",
+               "types" : [ "route" ]
+            },
+            {
+               "long_name" : "科園里",
+               "short_name" : "科園里",
+               "types" : [ "sublocality", "political" ]
+            },
+            {
+               "long_name" : "東區",
+               "short_name" : "東區",
+               "types" : [ "locality", "political" ]
+            },
+            {
+               "long_name" : "新竹市",
+               "short_name" : "新竹市",
+               "types" : [ "administrative_area_level_2", "political" ]
+            },
+            {
+               "long_name" : "台灣",
+               "short_name" : "TW",
+               "types" : [ "country", "political" ]
+            },
+            {
+               "long_name" : "300",
+               "short_name" : "300",
+               "types" : [ "postal_code" ]
+            }
+         ],
+         "formatted_address" : "300台灣新竹市東區工業東二路2之1號中華郵政",
+         "geometry" : {
+            "location" : {
+               "lat" : 24.7798540,
+               "lng" : 121.00472840
+            },
+            "location_type" : "APPROXIMATE",
+            "viewport" : {
+               "northeast" : {
+                  "lat" : 24.78120298029150,
+                  "lng" : 121.0060773802915
+               },
+               "southwest" : {
+                  "lat" : 24.77850501970850,
+                  "lng" : 121.0033794197085
+               }
+            }
+         },
+         "types" : [ "point_of_interest", "post_office", "finance", "establishment" ]
+      },
+      {
+         "address_components" : [
+            {
+               "long_name" : "中華郵政",
+               "short_name" : "中華郵政",
+               "types" : [ "point_of_interest", "establishment" ]
+            },
+            {
+               "long_name" : "177號",
+               "short_name" : "177號",
+               "types" : [ "street_number" ]
+            },
+            {
+               "long_name" : "中正三路",
+               "short_name" : "中正三路",
+               "types" : [ "route" ]
+            },
+            {
+               "long_name" : "東坡里",
+               "short_name" : "東坡里",
+               "types" : [ "sublocality", "political" ]
+            },
+            {
+               "long_name" : "新興區",
+               "short_name" : "新興區",
+               "types" : [ "locality", "political" ]
+            },
+            {
+               "long_name" : "高雄市",
+               "short_name" : "高雄市",
+               "types" : [ "administrative_area_level_2", "political" ]
+            },
+            {
+               "long_name" : "台灣",
+               "short_name" : "TW",
+               "types" : [ "country", "political" ]
+            },
+            {
+               "long_name" : "800",
+               "short_name" : "800",
+               "types" : [ "postal_code" ]
+            }
+         ],
+         "formatted_address" : "800台灣高雄市新興區中正三路177號中華郵政",
+         "geometry" : {
+            "location" : {
+               "lat" : 22.6310120,
+               "lng" : 120.304160
+            },
+            "location_type" : "APPROXIMATE",
+            "viewport" : {
+               "northeast" : {
+                  "lat" : 22.63236098029150,
+                  "lng" : 120.3055089802915
+               },
+               "southwest" : {
+                  "lat" : 22.62966301970850,
+                  "lng" : 120.3028110197085
+               }
+            }
+         },
+         "types" : [ "point_of_interest", "post_office", "finance", "establishment" ]
+      },
+      {
+         "address_components" : [
+            {
+               "long_name" : "中華郵政",
+               "short_name" : "中華郵政",
+               "types" : [ "point_of_interest", "establishment" ]
+            },
+            {
+               "long_name" : "313號",
+               "short_name" : "313號",
+               "types" : [ "street_number" ]
+            },
+            {
+               "long_name" : "光復路一段",
+               "short_name" : "光復路一段",
+               "types" : [ "route" ]
+            },
+            {
+               "long_name" : "仙水里",
+               "short_name" : "仙水里",
+               "types" : [ "sublocality", "political" ]
+            },
+            {
+               "long_name" : "東區",
+               "short_name" : "東區",
+               "types" : [ "locality", "political" ]
+            },
+            {
+               "long_name" : "新竹市",
+               "short_name" : "新竹市",
+               "types" : [ "administrative_area_level_2", "political" ]
+            },
+            {
+               "long_name" : "台灣",
+               "short_name" : "TW",
+               "types" : [ "country", "political" ]
+            },
+            {
+               "long_name" : "300",
+               "short_name" : "300",
+               "types" : [ "postal_code" ]
+            }
+         ],
+         "formatted_address" : "300台灣新竹市東區光復路一段313號中華郵政",
+         "geometry" : {
+            "location" : {
+               "lat" : 24.78266830,
+               "lng" : 121.01874290
+            },
+            "location_type" : "APPROXIMATE",
+            "viewport" : {
+               "northeast" : {
+                  "lat" : 24.78401728029150,
+                  "lng" : 121.0200918802915
+               },
+               "southwest" : {
+                  "lat" : 24.78131931970849,
+                  "lng" : 121.0173939197085
+               }
+            }
+         },
+         "types" : [ "point_of_interest", "post_office", "finance", "establishment" ]
+      },
+      {
+         "address_components" : [
+            {
+               "long_name" : "中華郵政",
+               "short_name" : "中華郵政",
+               "types" : [ "point_of_interest", "establishment" ]
+            },
+            {
+               "long_name" : "9號",
+               "short_name" : "9號",
+               "types" : [ "street_number" ]
+            },
+            {
+               "long_name" : "自強街",
+               "short_name" : "自強街",
+               "types" : [ "route" ]
+            },
+            {
+               "long_name" : "大社村",
+               "short_name" : "大社村",
+               "types" : [ "sublocality", "political" ]
+            },
+            {
+               "long_name" : "大社區",
+               "short_name" : "大社區",
+               "types" : [ "locality", "political" ]
+            },
+            {
+               "long_name" : "高雄市",
+               "short_name" : "高雄市",
+               "types" : [ "administrative_area_level_2", "political" ]
+            },
+            {
+               "long_name" : "台灣",
+               "short_name" : "TW",
+               "types" : [ "country", "political" ]
+            },
+            {
+               "long_name" : "815",
+               "short_name" : "815",
+               "types" : [ "postal_code" ]
+            }
+         ],
+         "formatted_address" : "815台灣高雄市大社區自強街9號中華郵政",
+         "geometry" : {
+            "location" : {
+               "lat" : 22.73119680,
+               "lng" : 120.34702310
+            },
+            "location_type" : "APPROXIMATE",
+            "viewport" : {
+               "northeast" : {
+                  "lat" : 22.73254578029150,
+                  "lng" : 120.3483720802915
+               },
+               "southwest" : {
+                  "lat" : 22.72984781970850,
+                  "lng" : 120.3456741197085
+               }
+            }
+         },
+         "types" : [ "point_of_interest", "post_office", "finance", "establishment" ]
+      },
+      {
+         "address_components" : [
+            {
+               "long_name" : "中華郵政",
+               "short_name" : "中華郵政",
+               "types" : [ "point_of_interest", "establishment" ]
+            },
+            {
+               "long_name" : "155號",
+               "short_name" : "155號",
+               "types" : [ "street_number" ]
+            },
+            {
+               "long_name" : "和平東路一段",
+               "short_name" : "和平東路一段",
+               "types" : [ "route" ]
+            },
+            {
+               "long_name" : "龍安里",
+               "short_name" : "龍安里",
+               "types" : [ "sublocality", "political" ]
+            },
+            {
+               "long_name" : "大安區",
+               "short_name" : "大安區",
+               "types" : [ "locality", "political" ]
+            },
+            {
+               "long_name" : "台北市",
+               "short_name" : "北市",
+               "types" : [ "administrative_area_level_2", "political" ]
+            },
+            {
+               "long_name" : "台灣",
+               "short_name" : "TW",
+               "types" : [ "country", "political" ]
+            },
+            {
+               "long_name" : "106",
+               "short_name" : "106",
+               "types" : [ "postal_code" ]
+            }
+         ],
+         "formatted_address" : "106台灣台北市大安區和平東路一段155號中華郵政",
+         "geometry" : {
+            "location" : {
+               "lat" : 25.0266180,
+               "lng" : 121.531140
+            },
+            "location_type" : "APPROXIMATE",
+            "viewport" : {
+               "northeast" : {
+                  "lat" : 25.02796698029150,
+                  "lng" : 121.5324889802915
+               },
+               "southwest" : {
+                  "lat" : 25.02526901970850,
+                  "lng" : 121.5297910197085
+               }
+            }
+         },
+         "types" : [ "point_of_interest", "post_office", "finance", "establishment" ]
+      },
+      {
+         "address_components" : [
+            {
+               "long_name" : "中華郵政",
+               "short_name" : "中華郵政",
+               "types" : [ "point_of_interest", "establishment" ]
+            },
+            {
+               "long_name" : "199號",
+               "short_name" : "199號",
+               "types" : [ "street_number" ]
+            },
+            {
+               "long_name" : "向上路二段",
+               "short_name" : "向上路二段",
+               "types" : [ "route" ]
+            },
+            {
+               "long_name" : "惠中里",
+               "short_name" : "惠中里",
+               "types" : [ "sublocality", "political" ]
+            },
+            {
+               "long_name" : "南屯區",
+               "short_name" : "南屯區",
+               "types" : [ "locality", "political" ]
+            },
+            {
+               "long_name" : "台中市",
+               "short_name" : "台中市",
+               "types" : [ "administrative_area_level_2", "political" ]
+            },
+            {
+               "long_name" : "台灣",
+               "short_name" : "TW",
+               "types" : [ "country", "political" ]
+            },
+            {
+               "long_name" : "408",
+               "short_name" : "408",
+               "types" : [ "postal_code" ]
+            }
+         ],
+         "formatted_address" : "408台灣台中市南屯區向上路二段199號中華郵政",
+         "geometry" : {
+            "location" : {
+               "lat" : 24.14682790,
+               "lng" : 120.64086760
+            },
+            "location_type" : "APPROXIMATE",
+            "viewport" : {
+               "northeast" : {
+                  "lat" : 24.14817688029150,
+                  "lng" : 120.6422165802915
+               },
+               "southwest" : {
+                  "lat" : 24.14547891970850,
+                  "lng" : 120.6395186197085
+               }
+            }
+         },
+         "types" : [ "point_of_interest", "post_office", "finance", "establishment" ]
+      },
+      {
+         "address_components" : [
+            {
+               "long_name" : "中華郵政",
+               "short_name" : "中華郵政",
+               "types" : [ "point_of_interest", "establishment" ]
+            },
+            {
+               "long_name" : "171號",
+               "short_name" : "171號",
+               "types" : [ "street_number" ]
+            },
+            {
+               "long_name" : "市中一路",
+               "short_name" : "市中一路",
+               "types" : [ "route" ]
+            },
+            {
+               "long_name" : "林投里",
+               "short_name" : "林投里",
+               "types" : [ "sublocality", "political" ]
+            },
+            {
+               "long_name" : "前金區",
+               "short_name" : "前金區",
+               "types" : [ "locality", "political" ]
+            },
+            {
+               "long_name" : "高雄市",
+               "short_name" : "高雄市",
+               "types" : [ "administrative_area_level_2", "political" ]
+            },
+            {
+               "long_name" : "台灣",
+               "short_name" : "TW",
+               "types" : [ "country", "political" ]
+            },
+            {
+               "long_name" : "801",
+               "short_name" : "801",
+               "types" : [ "postal_code" ]
+            }
+         ],
+         "formatted_address" : "801台灣高雄市前金區市中一路171號中華郵政",
+         "geometry" : {
+            "location" : {
+               "lat" : 22.62695680,
+               "lng" : 120.29061640
+            },
+            "location_type" : "APPROXIMATE",
+            "viewport" : {
+               "northeast" : {
+                  "lat" : 22.62830578029150,
+                  "lng" : 120.2919653802915
+               },
+               "southwest" : {
+                  "lat" : 22.62560781970850,
+                  "lng" : 120.2892674197085
+               }
+            }
+         },
+         "types" : [ "point_of_interest", "post_office", "finance", "establishment" ]
+      },
+      {
+         "address_components" : [
+            {
+               "long_name" : "中華郵政",
+               "short_name" : "中華郵政",
+               "types" : [ "point_of_interest", "establishment" ]
+            },
+            {
+               "long_name" : "10號",
+               "short_name" : "10號",
+               "types" : [ "street_number" ]
+            },
+            {
+               "long_name" : "南祥路",
+               "short_name" : "南祥路",
+               "types" : [ "route" ]
+            },
+            {
+               "long_name" : "南崁村",
+               "short_name" : "南崁村",
+               "types" : [ "sublocality", "political" ]
+            },
+            {
+               "long_name" : "蘆竹鄉",
+               "short_name" : "蘆竹鄉",
+               "types" : [ "locality", "political" ]
+            },
+            {
+               "long_name" : "桃園縣",
+               "short_name" : "桃園縣",
+               "types" : [ "administrative_area_level_2", "political" ]
+            },
+            {
+               "long_name" : "台灣",
+               "short_name" : "TW",
+               "types" : [ "country", "political" ]
+            },
+            {
+               "long_name" : "338",
+               "short_name" : "338",
+               "types" : [ "postal_code" ]
+            }
+         ],
+         "formatted_address" : "338台灣桃園縣蘆竹鄉南祥路10號中華郵政",
+         "geometry" : {
+            "location" : {
+               "lat" : 25.04586780,
+               "lng" : 121.29641360
+            },
+            "location_type" : "APPROXIMATE",
+            "viewport" : {
+               "northeast" : {
+                  "lat" : 25.04721678029150,
+                  "lng" : 121.2977625802915
+               },
+               "southwest" : {
+                  "lat" : 25.04451881970850,
+                  "lng" : 121.2950646197085
+               }
+            }
+         },
+         "types" : [ "point_of_interest", "post_office", "finance", "establishment" ]
+      },
+      {
+         "address_components" : [
+            {
+               "long_name" : "中華郵政",
+               "short_name" : "中華郵政",
+               "types" : [ "point_of_interest", "establishment" ]
+            },
+            {
+               "long_name" : "42號",
+               "short_name" : "42號",
+               "types" : [ "street_number" ]
+            },
+            {
+               "long_name" : "牛埔南路",
+               "short_name" : "牛埔南路",
+               "types" : [ "route" ]
+            },
+            {
+               "long_name" : "埔前里",
+               "short_name" : "埔前里",
+               "types" : [ "sublocality", "political" ]
+            },
+            {
+               "long_name" : "香山區",
+               "short_name" : "香山區",
+               "types" : [ "locality", "political" ]
+            },
+            {
+               "long_name" : "新竹市",
+               "short_name" : "新竹市",
+               "types" : [ "administrative_area_level_2", "political" ]
+            },
+            {
+               "long_name" : "台灣",
+               "short_name" : "TW",
+               "types" : [ "country", "political" ]
+            },
+            {
+               "long_name" : "300",
+               "short_name" : "300",
+               "types" : [ "postal_code" ]
+            }
+         ],
+         "formatted_address" : "300台灣新竹市香山區牛埔南路42號中華郵政",
+         "geometry" : {
+            "location" : {
+               "lat" : 24.79454780,
+               "lng" : 120.94182090
+            },
+            "location_type" : "APPROXIMATE",
+            "viewport" : {
+               "northeast" : {
+                  "lat" : 24.79589678029150,
+                  "lng" : 120.9431698802915
+               },
+               "southwest" : {
+                  "lat" : 24.79319881970850,
+                  "lng" : 120.9404719197085
+               }
+            }
+         },
+         "types" : [ "point_of_interest", "post_office", "finance", "establishment" ]
+      },
+      {
+         "address_components" : [
+            {
+               "long_name" : "中華郵政",
+               "short_name" : "中華郵政",
+               "types" : [ "point_of_interest", "establishment" ]
+            },
+            {
+               "long_name" : "110號",
+               "short_name" : "110號",
+               "types" : [ "street_number" ]
+            },
+            {
+               "long_name" : "松竹北路",
+               "short_name" : "松竹北路",
+               "types" : [ "route" ]
+            },
+            {
+               "long_name" : "松勇里",
+               "short_name" : "松勇里",
+               "types" : [ "sublocality", "political" ]
+            },
+            {
+               "long_name" : "北屯區",
+               "short_name" : "北屯區",
+               "types" : [ "locality", "political" ]
+            },
+            {
+               "long_name" : "台中市",
+               "short_name" : "台中市",
+               "types" : [ "administrative_area_level_2", "political" ]
+            },
+            {
+               "long_name" : "台灣",
+               "short_name" : "TW",
+               "types" : [ "country", "political" ]
+            },
+            {
+               "long_name" : "406",
+               "short_name" : "406",
+               "types" : [ "postal_code" ]
+            }
+         ],
+         "formatted_address" : "406台灣台中市北屯區松竹北路110號中華郵政",
+         "geometry" : {
+            "location" : {
+               "lat" : 24.18565690,
+               "lng" : 120.69924610
+            },
+            "location_type" : "APPROXIMATE",
+            "viewport" : {
+               "northeast" : {
+                  "lat" : 24.18700588029150,
+                  "lng" : 120.7005950802915
+               },
+               "southwest" : {
+                  "lat" : 24.18430791970849,
+                  "lng" : 120.6978971197085
+               }
+            }
+         },
+         "types" : [ "point_of_interest", "post_office", "finance", "establishment" ]
+      },
+      {
+         "address_components" : [
+            {
+               "long_name" : "中華郵政",
+               "short_name" : "中華郵政",
+               "types" : [ "point_of_interest", "establishment" ]
+            },
+            {
+               "long_name" : "42號",
+               "short_name" : "42號",
+               "types" : [ "street_number" ]
+            },
+            {
+               "long_name" : "龍安路",
+               "short_name" : "龍安路",
+               "types" : [ "route" ]
+            },
+            {
+               "long_name" : "復興里",
+               "short_name" : "復興里",
+               "types" : [ "sublocality", "political" ]
+            },
+            {
+               "long_name" : "汐止區",
+               "short_name" : "汐止區",
+               "types" : [ "locality", "political" ]
+            },
+            {
+               "long_name" : "新北市",
+               "short_name" : "新北市",
+               "types" : [ "administrative_area_level_2", "political" ]
+            },
+            {
+               "long_name" : "台灣",
+               "short_name" : "TW",
+               "types" : [ "country", "political" ]
+            },
+            {
+               "long_name" : "221",
+               "short_name" : "221",
+               "types" : [ "postal_code" ]
+            }
+         ],
+         "formatted_address" : "221台灣新北市汐止區龍安路42號中華郵政",
+         "geometry" : {
+            "location" : {
+               "lat" : 25.0638070,
+               "lng" : 121.654340
+            },
+            "location_type" : "APPROXIMATE",
+            "viewport" : {
+               "northeast" : {
+                  "lat" : 25.06515598029150,
+                  "lng" : 121.6556889802915
+               },
+               "southwest" : {
+                  "lat" : 25.06245801970850,
+                  "lng" : 121.6529910197085
+               }
+            }
+         },
+         "types" : [ "point_of_interest", "post_office", "finance", "establishment" ]
+      },
+      {
+         "address_components" : [
+            {
+               "long_name" : "中華郵政",
+               "short_name" : "中華郵政",
+               "types" : [ "point_of_interest", "establishment" ]
+            },
+            {
+               "long_name" : "148之30號",
+               "short_name" : "148之30號",
+               "types" : [ "street_number" ]
+            },
+            {
+               "long_name" : "光華一路",
+               "short_name" : "光華一路",
+               "types" : [ "route" ]
+            },
+            {
+               "long_name" : "林南里",
+               "short_name" : "林南里",
+               "types" : [ "sublocality", "political" ]
+            },
+            {
+               "long_name" : "苓雅區",
+               "short_name" : "苓雅區",
+               "types" : [ "locality", "political" ]
+            },
+            {
+               "long_name" : "高雄市",
+               "short_name" : "高雄市",
+               "types" : [ "administrative_area_level_2", "political" ]
+            },
+            {
+               "long_name" : "台灣",
+               "short_name" : "TW",
+               "types" : [ "country", "political" ]
+            },
+            {
+               "long_name" : "802",
+               "short_name" : "802",
+               "types" : [ "postal_code" ]
+            }
+         ],
+         "formatted_address" : "802台灣高雄市苓雅區光華一路148之30號中華郵政",
+         "geometry" : {
+            "location" : {
+               "lat" : 22.6228420,
+               "lng" : 120.3162250
+            },
+            "location_type" : "APPROXIMATE",
+            "viewport" : {
+               "northeast" : {
+                  "lat" : 22.62419098029150,
+                  "lng" : 120.3175739802915
+               },
+               "southwest" : {
+                  "lat" : 22.62149301970850,
+                  "lng" : 120.3148760197085
+               }
+            }
+         },
+         "types" : [ "point_of_interest", "post_office", "finance", "establishment" ]
+      },
+      {
+         "address_components" : [
+            {
+               "long_name" : "中華郵政",
+               "short_name" : "中華郵政",
+               "types" : [ "point_of_interest", "establishment" ]
+            },
+            {
+               "long_name" : "382號",
+               "short_name" : "382號",
+               "types" : [ "street_number" ]
+            },
+            {
+               "long_name" : "中山路",
+               "short_name" : "中山路",
+               "types" : [ "route" ]
+            },
+            {
+               "long_name" : "鐵花里",
+               "short_name" : "鐵花里",
+               "types" : [ "sublocality", "political" ]
+            },
+            {
+               "long_name" : "台東市",
+               "short_name" : "台東市",
+               "types" : [ "locality", "political" ]
+            },
+            {
+               "long_name" : "台東縣",
+               "short_name" : "台東縣",
+               "types" : [ "administrative_area_level_2", "political" ]
+            },
+            {
+               "long_name" : "台灣",
+               "short_name" : "TW",
+               "types" : [ "country", "political" ]
+            },
+            {
+               "long_name" : "950",
+               "short_name" : "950",
+               "types" : [ "postal_code" ]
+            }
+         ],
+         "formatted_address" : "950台灣台東縣台東市中山路382號中華郵政",
+         "geometry" : {
+            "location" : {
+               "lat" : 22.75315390,
+               "lng" : 121.14837890
+            },
+            "location_type" : "APPROXIMATE",
+            "viewport" : {
+               "northeast" : {
+                  "lat" : 22.75450288029150,
+                  "lng" : 121.1497278802915
+               },
+               "southwest" : {
+                  "lat" : 22.75180491970850,
+                  "lng" : 121.1470299197085
+               }
+            }
+         },
+         "types" : [ "point_of_interest", "post_office", "finance", "establishment" ]
+      },
+      {
+         "address_components" : [
+            {
+               "long_name" : "中華郵政",
+               "short_name" : "中華郵政",
+               "types" : [ "point_of_interest", "establishment" ]
+            },
+            {
+               "long_name" : "171號",
+               "short_name" : "171號",
+               "types" : [ "street_number" ]
+            },
+            {
+               "long_name" : "復興二路",
+               "short_name" : "復興二路",
+               "types" : [ "route" ]
+            },
+            {
+               "long_name" : "浩然里",
+               "short_name" : "浩然里",
+               "types" : [ "sublocality", "political" ]
+            },
+            {
+               "long_name" : "新興區",
+               "short_name" : "新興區",
+               "types" : [ "locality", "political" ]
+            },
+            {
+               "long_name" : "高雄市",
+               "short_name" : "高雄市",
+               "types" : [ "administrative_area_level_2", "political" ]
+            },
+            {
+               "long_name" : "台灣",
+               "short_name" : "TW",
+               "types" : [ "country", "political" ]
+            },
+            {
+               "long_name" : "802",
+               "short_name" : "802",
+               "types" : [ "postal_code" ]
+            }
+         ],
+         "formatted_address" : "802台灣高雄市新興區復興二路171號中華郵政",
+         "geometry" : {
+            "location" : {
+               "lat" : 22.62495580,
+               "lng" : 120.30835350
+            },
+            "location_type" : "APPROXIMATE",
+            "viewport" : {
+               "northeast" : {
+                  "lat" : 22.62630478029151,
+                  "lng" : 120.3097024802915
+               },
+               "southwest" : {
+                  "lat" : 22.62360681970850,
+                  "lng" : 120.3070045197085
+               }
+            }
+         },
+         "types" : [ "point_of_interest", "post_office", "finance", "establishment" ]
+      }
+   ],
+   "status" : "OK"
+}

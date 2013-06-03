@@ -32,8 +32,8 @@ public final class HadoopPropertyXMLMapReduce {
         XMLStreamReader reader =
             XMLInputFactory.newInstance().createXMLStreamReader(new
                 ByteArrayInputStream(document.getBytes()));
-        String propertyName = "";
-        String propertyValue = "";
+        String title = "";
+        String link = "";
         String currentElement = "";
         while (reader.hasNext()) {
           int code = reader.next();
@@ -42,16 +42,16 @@ public final class HadoopPropertyXMLMapReduce {
               currentElement = reader.getLocalName();
               break;
             case CHARACTERS:
-              if (currentElement.equalsIgnoreCase("name")) {
-                propertyName += reader.getText();
-              } else if (currentElement.equalsIgnoreCase("value")) {
-                propertyValue += reader.getText();
+              if (currentElement.equalsIgnoreCase("title")) {
+                title += reader.getText();
+              } else if (currentElement.equalsIgnoreCase("link")) {
+                link += reader.getText();
               }
               break;
           }
         }
         reader.close();
-        context.write(propertyName.trim(), propertyValue.trim());
+        context.write(link.trim(), title.trim());
       } catch (Exception e) {
         log.error("Error processing '" + document + "'", e);
       }
@@ -67,8 +67,8 @@ public final class HadoopPropertyXMLMapReduce {
       throws Exception {
     Configuration conf = new Configuration();
     conf.set("key.value.separator.in.input.line", " ");
-    conf.set("xmlinput.start", "<property>");
-    conf.set("xmlinput.end", "</property>");
+    conf.set("xmlinput.start", "<item>");
+    conf.set("xmlinput.end", "</item>");
 
     Job job = new Job(conf);
     job.setJarByClass(HadoopPropertyXMLMapReduce.class);
