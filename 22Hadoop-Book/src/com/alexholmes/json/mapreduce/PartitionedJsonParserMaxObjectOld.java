@@ -1,4 +1,4 @@
-package com.alexholmes.json.parser;
+package com.alexholmes.json.mapreduce;
 
 import org.apache.commons.lang.mutable.MutableInt;
 import org.junit.Test;

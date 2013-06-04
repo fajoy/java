@@ -1,4 +1,4 @@
-package com.alexholmes.json.parser;
+package com.alexholmes.json.mapreduce;
 
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.IOUtils;

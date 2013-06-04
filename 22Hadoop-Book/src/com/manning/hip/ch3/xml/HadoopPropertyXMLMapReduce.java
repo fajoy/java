@@ -72,11 +72,10 @@ public final class HadoopPropertyXMLMapReduce {
 
     Job job = new Job(conf);
     job.setJarByClass(HadoopPropertyXMLMapReduce.class);
+    job.setInputFormatClass(XmlInputFormat.class);
+    job.setMapperClass(Map.class);
     job.setOutputKeyClass(Text.class);
     job.setOutputValueClass(Text.class);
-    job.setMapperClass(Map.class);
-    job.setInputFormatClass(XmlInputFormat.class);
-    job.setNumReduceTasks(0);
     job.setOutputFormatClass(TextOutputFormat.class);
 
     FileInputFormat.setInputPaths(job, new Path(input));
