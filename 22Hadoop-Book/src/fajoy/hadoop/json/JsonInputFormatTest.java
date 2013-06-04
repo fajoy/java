@@ -11,6 +11,7 @@ import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.conf.Configured;
 import org.apache.hadoop.fs.Path;
 
+import org.apache.hadoop.io.LongWritable;
 import org.apache.hadoop.io.Text;
 
 import org.apache.hadoop.mapreduce.Job;
@@ -29,9 +30,9 @@ public class JsonInputFormatTest {
 	private JsonInputFormatTest() {
 	}
 
-	public static class JsonMapper extends Mapper<Text, Text, Text, Text> {
+	public static class JsonMapper extends Mapper<LongWritable, Text, LongWritable, Text> {
 		@Override
-		protected void map(Text key, Text value, Context context)
+		protected void map(LongWritable key, Text value, Context context)
 				throws IOException, InterruptedException {
 			context.write(key, value);
 		}
