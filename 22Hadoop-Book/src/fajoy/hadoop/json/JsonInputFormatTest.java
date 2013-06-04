@@ -31,10 +31,12 @@ public class JsonInputFormatTest {
 	}
 
 	public static class JsonMapper extends Mapper<LongWritable, Text, LongWritable, Text> {
+		Text newValue=new Text();;
 		@Override
 		protected void map(LongWritable key, Text value, Context context)
 				throws IOException, InterruptedException {
-			context.write(key, value);
+			newValue.set(value.toString().replace("\n", ""));
+			context.write(key, newValue);
 		}
 	}
 
@@ -44,7 +46,7 @@ public class JsonInputFormatTest {
 
 	public static void runJob(String input, String output) throws Exception {
 		Configuration conf = new Configuration();
-		conf.set("multilinejsoninputformat.member", "results");
+		conf.set("multilinejsoninputformat.member", "address_components");
 		Job job = new Job(conf);
 
 		job.setJobName("JsonInputFormatTest");
@@ -52,7 +54,7 @@ public class JsonInputFormatTest {
 
 		job.setInputFormatClass(MultiLineJsonInputFormat.class);
 		job.setMapperClass(JsonMapper.class);
-		job.setOutputKeyClass(Text.class);
+		job.setOutputKeyClass(LongWritable.class);
 		job.setOutputValueClass(Text.class);
 		job.setOutputFormatClass(TextOutputFormat.class);
 
