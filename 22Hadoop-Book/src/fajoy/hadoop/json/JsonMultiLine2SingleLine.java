@@ -22,11 +22,11 @@ import org.apache.hadoop.mapreduce.lib.output.TextOutputFormat;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class JsonInputFormatTest {
+public class JsonMultiLine2SingleLine {
     private static final Logger LOG = LoggerFactory
-            .getLogger(JsonInputFormatTest.class);
+            .getLogger(JsonMultiLine2SingleLine.class);
 
-    private JsonInputFormatTest() {
+    private JsonMultiLine2SingleLine() {
     }
 
     public static class JsonMapper extends Mapper<LongWritable, Text, NullWritable, Text> {
@@ -46,8 +46,8 @@ public class JsonInputFormatTest {
     public static void runJob(String input, String output,String attr) throws Exception {
         Configuration conf = new Configuration();
         Job job = new Job(conf);
-        job.setJobName("MulitLineJson2SingleLine");
-        job.setJarByClass(JsonInputFormatTest.class);
+        job.setJobName("JsonMultiLine2SingleLine");
+        job.setJarByClass(JsonMultiLine2SingleLine.class);
 
         job.setInputFormatClass(MultiLineJsonInputFormat.class);
         MultiLineJsonInputFormat.setInputJsonMember(job, attr);
